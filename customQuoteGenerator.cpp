@@ -141,11 +141,11 @@ void Welcome() {
 
 void ParseFile(ifstream& infile, string line, vector<string>& topics, vector<vector<string>>& subtopics, unordered_multimap<string, string>& quotesMap) {
 	string topic = "MAINTOPIC: ", subtopic = "SUBTOPIC: ", quote = "QUOTE: ", endfile = "ENDFILE"; vector<string> tempSubtopics;
-    while (getline(infile, line)) {
-    	SetTopics(line, topic, endfile, topics, subtopics, tempSubtopics);
-    	SetSubtopics(line, subtopic, tempSubtopics);
-    	SetQuotes(infile, line, quote, tempSubtopics, quotesMap);
-    }
+	while (getline(infile, line)) {
+    		SetTopics(line, topic, endfile, topics, subtopics, tempSubtopics);
+    		SetSubtopics(line, subtopic, tempSubtopics);
+    		SetQuotes(infile, line, quote, tempSubtopics, quotesMap);
+    	}
 }
 
 void SetTopics(string line, string topic, string endfile, vector<string>& topics, vector<vector<string>>& subtopics, vector<string>& tempSubtopics) {
@@ -236,36 +236,35 @@ void PrintAndUpdateQuoteValues(vector<string> temp, vector<string>& quotes) {
 }
 
 string FormatQuote(string quote) {
-  bool source = false;
-  for (unsigned int charIndex = 0, afterNewline = 0; charIndex < quote.length(); charIndex++, afterNewline++) {
-	if (quote[charIndex] == '\n') {
-		afterNewline = 0;
-	}
-    if (quote[charIndex] == '"' && charIndex != 0) {
-      cout << "inserted newline after quote" << endl;
-      quote.insert(charIndex + 1, "\n");
-      afterNewline = 0;
-      source = true;
-	}
-	if (afterNewline % 50 == 0 && afterNewline != 0) {
-		int tempCharIndex = charIndex;
-		while (quote[tempCharIndex] != ' ') {
-			if (quote[tempCharIndex] == '\n' || quote[tempCharIndex] == '\0') break;
-				tempCharIndex++;
+	bool source = false;
+	for (unsigned int charIndex = 0, afterNewline = 0; charIndex < quote.length(); charIndex++, afterNewline++) {
+		if (quote[charIndex] == '\n') {
+			afterNewline = 0;
 		}
-		if (quote[tempCharIndex] != '\n' && quote[tempCharIndex] != '\0') {
-			if (source) quote.insert(tempCharIndex + 1, " ");
-			quote.insert(tempCharIndex, "\n");
-		 }
-	 }
-  }
-  return quote;
+    		if (quote[charIndex] == '"' && charIndex != 0) {
+			quote.insert(charIndex + 1, "\n");
+	    		afterNewline = 0;
+	    		source = true;
+    		}
+		if (afterNewline % 50 == 0 && afterNewline != 0) {
+			int tempCharIndex = charIndex;
+			while (quote[tempCharIndex] != ' ') {
+				if (quote[tempCharIndex] == '\n' || quote[tempCharIndex] == '\0') break;
+				tempCharIndex++;
+			}
+			if (quote[tempCharIndex] != '\n' && quote[tempCharIndex] != '\0') {
+				if (source) quote.insert(tempCharIndex + 1, " ");
+				quote.insert(tempCharIndex, "\n");
+			}
+	 	}
+	}
+	return quote;
 }
 
 void PrintQuote(string quote) {
 	string border = string(65, '-');
 	cout << endl << endl << endl << endl << endl
-		 << border << endl
-		 << quote << endl
-		 << border << endl;
+		<< border << endl
+		<< quote << endl
+		<< border << endl;
 }
