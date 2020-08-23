@@ -7,4 +7,4 @@ Technologies Used:
 C++, Standard Template Library (STL), Vector and Map Data Structures
 
 Features:
-Reads data in from file, User interaction, Error handling, Consistent formatting, Scalable, Minimized repetitions
+Reads data in from file, user interaction, error handling, consistent formatting, scalable, minimized repetitions
