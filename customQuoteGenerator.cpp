@@ -4,7 +4,10 @@
 #include <vector>
 #include <unordered_map>
 #include <ctime>
-using namespace std;
+using std::cout; using std:: cin; using std::endl;
+using std::vector; using std::unordered_multimap; using std::unordered_map;
+using std::string;
+using std::ifstream;
 
 void Welcome();
 void Main(vector<string> topics, vector<vector<string>> subtopics, unordered_multimap<string, string> quotesMap, vector<string>& prevCustomQuotes, vector<string>& prevRandomQuotes);
