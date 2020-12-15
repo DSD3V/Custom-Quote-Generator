@@ -1,5 +1,5 @@
 # Custom Quote Generator
-An interactive custom quote generator built with C++.
+An interactive console-based custom quote generator built with C++.
 
 Run the program here: https://repl.it/@DS2K/Custom-Quote-Generator#main.cpp
 
